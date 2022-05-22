@@ -3,12 +3,16 @@ pipeline {
 
     stages {
         stage ('build') {
-            //sh './gradlew'
-            gradlew('test')
+            steps {
+                //sh './gradlew'
+                gradlew('test')
+            }
         }
         stage ('webtest') {
-            //bat 'docker-compose up'
-            gradlew('webtest')
+            steps {
+                //bat 'docker-compose up'
+                gradlew('webtest')
+            }
         }
     }
 }
