@@ -22,9 +22,13 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+dockerCompose {
+	executable = "C:\Program Files\Docker\Docker\resources\bin\docker-compose.exe"
+}
+
 task webtest(type:Exec) {
 	workingDir '.'
-	commandLine 'docker-compose up'
+	commandLine "docker-compose up"
 	standardOutput = new ByteArrayOutputStream()
   	ext.output = {
     	return standardOutput.toString()
