@@ -22,7 +22,7 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-task webtest(type:Exec) {
+task runCompose(type:Exec) {
 	workingDir '.'
 	commandLine "cmd", "docker-compose up"
 	standardOutput = new ByteArrayOutputStream()
