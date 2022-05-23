@@ -10,11 +10,11 @@ pipeline {
         }
         stage ('webtest') {
             steps {
-                //bat 'docker-compose up'
+                bat 'docker-compose up'
                 // gradlew('webtest')
-                withGradle {
-                    bat 'gradlew.bat :runCompose'
-                }
+                //withGradle {
+                //    bat 'gradlew.bat :runCompose'
+                //}
             }
         }
     }
