@@ -13,7 +13,7 @@ pipeline {
                 //bat 'docker-compose up'
                 // gradlew('webtest')
                 withGradle {
-                    bat 'gradlew.bat webtest'
+                    bat 'gradlew.bat :runCompose'
                 }
             }
         }
