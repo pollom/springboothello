@@ -8,7 +8,7 @@ pipeline {
                 gradlew('test')
             }
         }
-        stage ('webtest') {
+        stage ('webapp test') {
             steps {
                 bat 'docker-compose up'
                 // gradlew('webtest')
