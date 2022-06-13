@@ -28,5 +28,6 @@ task runCompose(type:Exec) {
 	standardOutput = new ByteArrayOutputStream()
   	ext.output = {
     	return standardOutput.toString()
-  	}		
+  	}
+	commandLine "cmd", "docker-compose down"		
 }
