@@ -29,5 +29,5 @@ task runCompose(type:Exec) {
   	ext.output = {
     	return standardOutput.toString()
   	}
-	commandLine "cmd", "docker-compose down"		
+	commandLine "cmd", "docker-compose stop web"		
 }
