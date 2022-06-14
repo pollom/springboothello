@@ -14,7 +14,7 @@ pipeline {
                 
                 // gradlew('webtest')
                 withGradle {
-                    bat 'gradlew :build'
+                    bat 'gradle test'
                 }
             }
         }
