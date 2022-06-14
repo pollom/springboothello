@@ -38,8 +38,8 @@ tasks.named('test') {
 } */
 
 
-task runCompose(type:Exec) {
-	workingDir '.'
+task composeUp(type:Exec) {
+	workingDir '$projectDir'
 	commandLine 'docker-compose', 'up'
 	standardOutput = new ByteArrayOutputStream()
   	ext.output = {
@@ -47,6 +47,15 @@ task runCompose(type:Exec) {
   	}
 			
 } 
+
+task composeDependenciesUp(type: Exec) {
+   workingDir "$projectDir"
+   commandLine 'docker-compose', '-f', 'docker-compose.yml', 'up', '-d'
+}
+task composeDown(type: Exec) {
+   workingDir "$projectDir"
+   commandLine 'docker-compose', 'down', '-t', '60', '-v'
+}
 
 /* task composeDown(type:Exec) {
 	workingDir '.'
