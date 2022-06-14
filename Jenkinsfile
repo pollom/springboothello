@@ -18,12 +18,21 @@ pipeline {
         }
         stage ('webapp test') {
             steps {
-                //bat 'docker-compose up'
-                
+                bat 'docker-compose up'
+
+
+                publishHTML (target: [
+                                allowMissing: false,
+                                alwaysLinkToLastBuild: false,
+                                keepAll: true,
+                                reportDir: 'coverage',
+                                reportFiles: 'index.html',
+                                reportName: "RCov Report"
+                ])
                 //gradlew('composeUp')
-                withGradle {
-                    bat 'gradlew composeUp'
-                }
+                //withGradle {
+                //    bat 'gradlew composeUp'
+                //}
             }
         }
     }
