@@ -22,7 +22,7 @@ pipeline {
                 
                 //gradlew('composeUp')
                 withGradle {
-                    bat 'gradle composeUp'
+                    bat 'gradlew composeUp'
                 }
             }
         }
