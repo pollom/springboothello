@@ -14,7 +14,7 @@ pipeline {
                 
                 // gradlew('webtest')
                 withGradle {
-                    bat 'gradle test'
+                    bat 'gradle runCompose'
                 }
             }
         }
