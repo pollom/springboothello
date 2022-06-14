@@ -28,7 +28,7 @@ tasks.register('composeup') {
 	doLast {
 		exec {
 			workingDir '.'
-			commandLine 'docker-compose', 'up'
+			commandLine 'docker-compose', 'up', '-d'
 			standardOutput = new ByteArrayOutputStream()
 			ext.output = {
 				return standardOutput.toString()
