@@ -18,7 +18,7 @@ pipeline {
                                 keepAll: true,
                                 reportDir: 'coverage',
                                 reportFiles: 'index.html',
-                                reportName: "RCov Report"
+                                reportName: "Test Report"
                 ])    
             }         
         }
