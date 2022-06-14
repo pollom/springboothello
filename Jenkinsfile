@@ -6,6 +6,12 @@ pipeline {
             steps {
                 //sh './gradlew'
                 gradlew('test')
+ 
+            }
+        }
+
+        stage ('test report') {
+            steps {
                 publishHTML (target: [
                                 allowMissing: false,
                                 alwaysLinkToLastBuild: false,
@@ -13,8 +19,8 @@ pipeline {
                                 reportDir: 'coverage',
                                 reportFiles: 'index.html',
                                 reportName: "RCov Report"
-                ]) 
-            }
+                ])    
+            }         
         }
 /*         stage ('webapp test') {
             steps {
