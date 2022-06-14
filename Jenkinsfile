@@ -12,7 +12,7 @@ pipeline {
             steps {
                 //bat 'docker-compose up'
                 
-                gradlew('webapp test')
+                gradlew('composeup')
                 //withGradle {
                 //    bat 'gradle runCompose'
                 //}
