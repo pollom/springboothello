@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage ('build') {
+        stage ('unit tests') {
             steps {
                 //sh './gradlew'
                 gradlew('test')
@@ -12,10 +12,10 @@ pipeline {
             steps {
                 //bat 'docker-compose up'
                 
-                // gradlew('webtest')
-                withGradle {
-                    bat 'gradle runCompose'
-                }
+                gradlew('webapp test')
+                //withGradle {
+                //    bat 'gradle runCompose'
+                //}
             }
         }
     }

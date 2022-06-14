@@ -22,7 +22,23 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-task runCompose(type:Exec) {
+tasks.register('composeup') {
+	dependsOn tasks.test
+
+	doLast {
+		exec {
+			workingDir '.'
+			commandLine 'docker-compose', 'up'
+			standardOutput = new ByteArrayOutputStream()
+			ext.output = {
+				return standardOutput.toString()
+			}
+		}
+	}
+}
+
+
+/* task runCompose(type:Exec) {
 	workingDir '.'
 	commandLine "cmd", "docker-compose up"
 	standardOutput = new ByteArrayOutputStream()
@@ -30,9 +46,9 @@ task runCompose(type:Exec) {
     	return standardOutput.toString()
   	}
 			
-}
+}  */
 
-task composeDown(type:Exec) {
+/* task composeDown(type:Exec) {
 	workingDir '.'
 	commandLine "cmd", "docker-compose down"
-}
+} */
