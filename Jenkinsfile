@@ -10,6 +10,20 @@ pipeline {
             }
         }
 
+
+         stage ('webapp test') {
+            steps {
+                bat 'docker-compose up'
+
+
+
+                //gradlew('composeUp')
+                //withGradle {
+                //    bat 'gradlew composeUp'
+                //}
+            }
+        } 
+
         stage ('test report') {
             steps {
                 publishHTML (target: [
@@ -21,19 +35,7 @@ pipeline {
                                 reportName: "Test Report"
                 ])    
             }         
-        }
-/*         stage ('webapp test') {
-            steps {
-                bat 'docker-compose up'
-
-
-
-                //gradlew('composeUp')
-                //withGradle {
-                //    bat 'gradlew composeUp'
-                //}
-            }
-        } */
+        }        
        
     }
 }
