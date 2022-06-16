@@ -28,7 +28,7 @@ pipeline {
             steps {
                 publishHTML (target: [
                                 allowMissing: false,
-                                alwaysLinkToLastBuild: true,
+                                alwaysLinkToLastBuild: false,
                                 keepAll: true,
                                 reportDir: 'coverage',
                                 reportFiles: 'index.html',
