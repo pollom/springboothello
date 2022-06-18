@@ -1,20 +1,42 @@
 pipeline {
-    agent none
+    agent any
 
     stages {
-
-        stage('Unit Tests') {
-            agent {
-                docker {image 'hello-spring-boot-docker:latest'}
-            }
-
+        stage ('Unit Tests') {
             steps {
-                bat 'gradlew.bat test'
+                //sh './gradlew'
+                gradlew('test')
+ 
             }
         }
 
 
- 
+         stage ('Playwright Tests') {
+            steps {
+                bat 'docker-compose up'
+
+
+
+                //gradlew('composeUp')
+                //withGradle {
+                //    bat 'gradlew composeUp'
+                //}
+            }
+        } 
+
+        stage ('Test Report') {
+            steps {
+                publishHTML (target: [
+                                allowMissing: false,
+                                alwaysLinkToLastBuild: false,
+                                keepAll: true,
+                                reportDir: 'coverage',
+                                reportFiles: 'index.html',
+                                reportName: "Test Report"
+                ])    
+            }         
+        }        
+       
     }
 }
 
