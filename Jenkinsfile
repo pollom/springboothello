@@ -6,7 +6,14 @@ pipeline {
             steps {
                 //sh './gradlew'
                 gradlew('test')
- 
+                publishHTML (target: [
+                                allowMissing: false,
+                                alwaysLinkToLastBuild: false,
+                                keepAll: true,
+                                reportDir: 'coverage',
+                                reportFiles: 'index.html',
+                                reportName: "Test Report"
+                ])  
             }
         }
 
@@ -24,7 +31,7 @@ pipeline {
             }
         } 
 
-        stage ('Test Report') {
+/*         stage ('Test Report') {
             steps {
                 publishHTML (target: [
                                 allowMissing: false,
@@ -35,7 +42,7 @@ pipeline {
                                 reportName: "Test Report"
                 ])    
             }         
-        }        
+        }    */     
        
     }
 }
