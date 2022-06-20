@@ -13,11 +13,11 @@ pipeline {
 
          stage ('Playwright Tests') {
             steps {
-                bat 'docker-compose up'
+                //bat 'docker-compose up'
 
 
 
-                //gradlew('composeUp')
+                gradlew('composeUp')
                 //withGradle {
                 //    bat 'gradlew composeUp'
                 //}
