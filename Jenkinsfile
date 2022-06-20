@@ -5,7 +5,10 @@ pipeline {
         stage ('Unit Tests') {
             steps {
                 //sh './gradlew'
-                gradlew('test')
+                //gradlew('test')
+                withGradle {
+                    bat 'gradlew test'
+                }
  
             }
         }
@@ -17,10 +20,10 @@ pipeline {
 
 
 
-                gradlew('composeUp')
-                //withGradle {
-                //    bat 'gradlew composeUp'
-                //}
+                //gradlew('composeUp')
+                withGradle {
+                    bat 'gradlew composeUp'
+                }
             }
         } 
 
@@ -40,6 +43,6 @@ pipeline {
     }
 }
 
-def gradlew(String... args) {
+/* def gradlew(String... args) {
     bat "gradlew.bat ${args.join(' ')} -s"
-}
+} */
