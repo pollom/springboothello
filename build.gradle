@@ -43,7 +43,7 @@ tasks.named('test') {
 
 task composeUp(type:Exec) {
 	workingDir '$projectDir'
-	commandLine 'docker-compose', 'up'
+	commandLine 'docker-compose', '-f', 'docker-compose.yml', 'up'
 	standardOutput = new ByteArrayOutputStream()
   	ext.output = {
     	return standardOutput.toString()
