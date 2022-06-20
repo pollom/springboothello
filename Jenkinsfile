@@ -8,7 +8,7 @@ pipeline {
                 //gradlew('test')
                 withGradle {
                     bat 'gradlew test'
-                }
+                }                
  
             }
         }
