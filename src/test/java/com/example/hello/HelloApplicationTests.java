@@ -6,8 +6,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class HelloApplicationTests {
 
-	@Test
+/* 	@Test
 	void contextLoads() {
-	}
-
+	} */
+    @Test
+    void justAnExample() {
+        System.out.println("This test method should be run");
+    }
 }
