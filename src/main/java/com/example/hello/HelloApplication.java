@@ -17,7 +17,7 @@ public class HelloApplication {
 	  
 	public static void main(String[] args) {
 		SpringApplication.run(HelloApplication.class, args);
-		System.exit(0);
+		//System.exit(0);
 	}
 
 }
