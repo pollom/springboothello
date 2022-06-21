@@ -14,7 +14,7 @@ pipeline {
         }
 
 
-         stage ('Playwright Tests') {
+/*          stage ('Playwright Tests') {
             steps {
                 //bat 'docker-compose up'
 
@@ -38,7 +38,7 @@ pipeline {
                                 reportName: "Test Report"
                 ])    
             }         
-        }         
+        }  */        
        
     }
 }
