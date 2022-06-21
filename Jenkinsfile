@@ -11,7 +11,15 @@ pipeline {
                 }                
  
             }
+
+            post {
+                always {
+                    junit '**/build/tests/test/*.html'
+                }
+            }
         }
+
+
 
 
 /*          stage ('Playwright Tests') {
