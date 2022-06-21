@@ -7,7 +7,7 @@ pipeline {
                 //sh './gradlew'
                 //gradlew('test')
                 withGradle {
-                    bat 'gradlew test'
+                    bat 'gradlew clean test'
                 }                
  
             }
