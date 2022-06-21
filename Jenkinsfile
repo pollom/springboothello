@@ -6,9 +6,10 @@ pipeline {
             steps {
                 //sh './gradlew'
                 //gradlew('test')
-                withGradle {
-                    bat 'gradlew clean test'
-                }                
+                bat '.\gradlew test'
+                //withGradle {
+                //    bat 'gradlew clean test'
+                //}                
  
             }
 
