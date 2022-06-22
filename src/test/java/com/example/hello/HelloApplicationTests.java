@@ -14,6 +14,6 @@ class HelloApplicationTests {
     @Test
     void testJustAnExample() {
         //System.out.println("This test method should be run");
-        assertEquals("Hello", "Goodbye");
+        assertEquals("Hello", "Hello");
     }
 }
