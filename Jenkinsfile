@@ -16,7 +16,7 @@ pipeline {
 
                 realtimeJUnit('**/build/test-results/TEST-*.xml') {
                     //sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
-                    bat 'gradlew clean verify'
+                    bat 'gradlew clean test'
                 }
  
             }
