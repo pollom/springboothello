@@ -6,18 +6,28 @@ pipeline {
             steps {
                 //sh './gradlew'
                 //gradlew('test')
-                bat 'gradlew test'
+                //bat 'gradlew test'
+                
                 //withGradle {
                 //    bat 'gradlew clean test'
-                //}                
+                //}          
+                
+                //junit '**/build/test-results/TEST-*.xml'
+
+                realtimeJUnit('**/build/test-results/TEST-*.xml') {
+                    //sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
+                    bat 'gradlew clean verify'
+                }
  
             }
 
-            post {
-                always {
-                    junit '**/build/test-results/TEST-*.xml'
-                }
-            }
+            
+            //post {
+            //    always {
+                    //junit '**/build/test-results/TEST-*.xml'
+            //    }
+            //} 
+            
         }
 
 
