@@ -9,7 +9,7 @@ pipeline {
  
 
 
-                bat 'gradlew test'
+                //bat 'gradlew test'
                 
                 //withGradle {
                 //    bat 'gradlew clean test'
