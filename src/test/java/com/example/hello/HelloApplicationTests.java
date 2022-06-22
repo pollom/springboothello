@@ -1,5 +1,7 @@
 package com.example.hello;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -10,8 +12,8 @@ class HelloApplicationTests {
 	void contextLoads() {
 	} */
     @Test
-    void testJustAnExample() throws Exception {
+    void testJustAnExample() {
         //System.out.println("This test method should be run");
-        throw new Exception();
+        assertEquals("Hello", "Goodbye");
     }
 }
