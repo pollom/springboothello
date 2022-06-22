@@ -6,6 +6,11 @@ pipeline {
             steps {
                 //sh './gradlew'
                 //gradlew('test')
+            testLogging {
+                events "PASSED", "SKIPPED", "FAILED"
+            } 
+
+
                 bat 'gradlew test -i'
                 
                 //withGradle {
@@ -21,7 +26,7 @@ pipeline {
  
             }
 
-            
+           
             //post {
             //    always {
                     //junit '**/build/test-results/TEST-*.xml'

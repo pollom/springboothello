@@ -7,16 +7,6 @@ plugins {
 
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-//sourceCompatibility = '11'
-
 repositories {
 	mavenCentral()
 }
@@ -28,6 +18,18 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'	
 	
 }
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = '11'
+
+
 
 tasks.named('test') {
 	useJUnitPlatform()
