@@ -21,7 +21,7 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(11)
     }
 }
 
@@ -55,6 +55,12 @@ test {
 	}
 } */
 
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.example.hello.HelloApplication'
+    }
+}
 
 task composeUp(type:Exec) {
 	workingDir '.'
