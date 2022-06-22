@@ -10,7 +10,8 @@ class HelloApplicationTests {
 	void contextLoads() {
 	} */
     @Test
-    void testJustAnExample() {
-        System.out.println("This test method should be run");
+    void testJustAnExample() throws Exception {
+        //System.out.println("This test method should be run");
+        throw new Exception();
     }
 }
