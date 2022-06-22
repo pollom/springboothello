@@ -25,11 +25,11 @@ pipeline {
             }
 
            
-            //post {
-            //    always {
-                    //junit '**/build/test-results/TEST-*.xml'
-            //    }
-            //} 
+            post {
+                always {
+                    junit '**/build/test-results/TEST-*.xml'
+                }
+            } 
             
         }
 
