@@ -6,9 +6,7 @@ pipeline {
             steps {
                 //sh './gradlew'
                 //gradlew('test')
-            testLogging {
-                events "PASSED", "SKIPPED", "FAILED"
-            } 
+ 
 
 
                 bat 'gradlew test -i'
@@ -19,10 +17,10 @@ pipeline {
                 
                 //junit '**/build/test-results/TEST-*.xml'
 
-                //realtimeJUnit('**/build/test-results/TEST-*.xml') {
+                realtimeJUnit('**/build/test-results/TEST-*.xml') {
                     //sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
-                //    bat 'gradlew test'
-                //}
+                    bat 'gradlew test'
+                }
  
             }
 
