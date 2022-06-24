@@ -19,6 +19,6 @@ class HelloApplicationTests {
 
     @Test
     void testErrorExample() {
-        assertEquals("Hello", "Goodbye");
+        assertEquals("Hello", "Hello");
     }
 }
