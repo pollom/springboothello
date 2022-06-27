@@ -37,8 +37,8 @@ pipeline {
                 docker { image 'test:latest' }
             } */
             steps {
-                bat 'docker run -it --rm -d --name testapp test:latest ./gradlew test'
-                sh './gradlew test'
+                bat 'docker run -d --name testapp test:latest'
+                //sh './gradlew test'
             }
         }
 
