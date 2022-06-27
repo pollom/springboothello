@@ -11,12 +11,13 @@ pipeline {
                     bat 'gradlew clean test'
                 }
 
-                post {
+/*                 post {
                     always {
                         junit '**/build/test-results/test/TEST-*.xml'
                         //bat 'docker run -d --name webapp hello-spring-boot-docker'
                     }
-                } 
+                }  
+                */
             }
 
            
