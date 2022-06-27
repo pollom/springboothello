@@ -14,7 +14,7 @@ pipeline {
                 post {
                     always {
                         junit '**/build/test-results/test/TEST-*.xml'
-                        bat 'docker run -d --name webapp hello-spring-boot-docker'
+                        //bat 'docker run -d --name webapp hello-spring-boot-docker'
                     }
                 } 
             }
