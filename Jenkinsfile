@@ -28,11 +28,8 @@ pipeline {
 
 
         stage('Web App Launch') {
-            agent {
-                docker { image 'hello-spring-boot-docker:latest' }
-            }
             steps {
-                
+                bat 'docker run -d --name webapp hello-spring-boot-docker'    
             }
         }
         stage('Playwright Tests') {
