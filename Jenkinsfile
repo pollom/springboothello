@@ -33,10 +33,11 @@ pipeline {
             }
         }
         stage('Playwright Tests') {
-            agent {
+/*             agent {
                 docker { image 'test:latest' }
-            }
+            } */
             steps {
+                bat 'docker run -d --name testapp test:latest'
                 sh './gradlew test'
             }
         }
