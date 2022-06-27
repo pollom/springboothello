@@ -25,6 +25,26 @@ pipeline {
             
         }
 
+
+
+        stage('Web App Launch') {
+            agent {
+                docker { image 'hello-spring-boot-docker:latest' }
+            }
+            steps {
+                
+            }
+        }
+        stage('Playwright Tests') {
+            agent {
+                docker { image 'test:latest' }
+            }
+            steps {
+                sh './gradlew test'
+            }
+        }
+
+
 /*         stage ('Playwright Tests') {
             agent {
                 docker {
