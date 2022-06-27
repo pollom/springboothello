@@ -11,12 +11,12 @@ pipeline {
                     bat 'gradlew clean test'
                 }
 
-                //post {
-                //    always {
-                //        junit '**/build/test-results/test/TEST-*.xml'
+                post {
+                    always {
+                        junit '**/build/test-results/test/TEST-*.xml'
                         //bat 'docker run -d --name webapp hello-spring-boot-docker'
-                //    }
-                //}  
+                    }
+                }  
                 
             }
 
@@ -37,7 +37,7 @@ pipeline {
                 docker { image 'test:latest' }
             } */
             steps {
-                bat 'docker run -d --name testapp test:latest'
+                bat 'docker run -it --rm -d --name testapp test:latest ./gradlew test'
                 sh './gradlew test'
             }
         }
