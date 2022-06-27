@@ -31,9 +31,12 @@ pipeline {
                 }
             }
 
-            steps {
+            stages {
                 stage ('Web Tests') {
-                    sh './gradlew test'
+                    steps {
+                        sh './gradlew test'
+                    }
+                    
                 }
             }
         }
