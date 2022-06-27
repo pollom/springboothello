@@ -24,7 +24,7 @@ pipeline {
             
         }
 
-        stage ('Playwright Tests') {
+/*         stage ('Playwright Tests') {
             agent {
                 docker {
                     image 'test:latest'
@@ -39,7 +39,7 @@ pipeline {
                     
                 }
             }
-        }
+        } */
 
 
 /*          stage ('Playwright Tests') {
