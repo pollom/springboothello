@@ -4,18 +4,7 @@ pipeline {
     stages {
         stage ('Unit Tests') {
             steps {
-                //sh './gradlew'
-                //gradlew('test')
  
-
-
-                //bat 'gradlew test'
-                
-                //withGradle {
-                //    bat 'gradlew clean test'
-                //}          
-                
-                //junit '**/build/test-results/TEST-*.xml'
 
                 realtimeJUnit('**/build/test-results/test/TEST-*.xml') {
                     //sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
@@ -25,6 +14,7 @@ pipeline {
                 post {
                     always {
                         junit '**/build/test-results/test/TEST-*.xml'
+                        bat 'docker run -d --name webapp hello-spring-boot-docker'
                     }
                 } 
             }
@@ -34,7 +24,19 @@ pipeline {
             
         }
 
+        stage ('Playwright Tests') {
+            agent {
+                docker {
+                    image 'test:latest'
+                }
+            }
 
+            steps {
+                stage ('Web Tests') {
+                    sh './gradlew test'
+                }
+            }
+        }
 
 
 /*          stage ('Playwright Tests') {
