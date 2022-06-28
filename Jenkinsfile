@@ -40,6 +40,8 @@ pipeline {
             steps {
                 bat 'docker run -d --name testapp test:latest'
                 //sh './gradlew test'
+
+                step( [ $class: 'JacocoPublisher' ] )
             }
         }
 
