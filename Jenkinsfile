@@ -10,7 +10,8 @@ pipeline {
                     //sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
                     bat 'gradlew clean test'
                 }
-                step( [ $class: 'JacocoPublisher' ] )
+                
+                //step( [ $class: 'JacocoPublisher' ] )
 
                 //post {
                 //    always {
@@ -41,7 +42,7 @@ pipeline {
                 bat 'docker run -d --name testapp test:latest'
                 //sh './gradlew test'
 
-                step( [ $class: 'JacocoPublisher' ] )
+                //step( [ $class: 'JacocoPublisher' ] )
             }
         }
 
@@ -88,7 +89,13 @@ pipeline {
                                 reportName: "Test Report"
                 ])    
             }         
-        }  */        
+        }  */  
+
+        stage ('Test Report') {
+            steps {
+                step( [ $class: 'JacocoPublisher' ] )
+            }
+        }     
        
     }
 }
