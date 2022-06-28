@@ -10,6 +10,7 @@ pipeline {
                     //sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
                     bat 'gradlew clean test'
                 }
+                step( [ $class: 'JacocoPublisher' ] )
 
                 //post {
                 //    always {
