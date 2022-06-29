@@ -34,17 +34,34 @@ pipeline {
                 bat 'docker run -d --name webapp hello-spring-boot-docker'    
             }
         }
+
+
         stage('Playwright Tests') {
+            steps {
+                docker.image('test:latest').withRun('./gradlew build') { c ->
+                    /* Wait until mysql service is up */
+                    //sh 'while ! mysqladmin ping -h0.0.0.0 --silent; do sleep 1; done'
+                    /* Run some tests which require MySQL */
+                    //sh 'make check'
+                    sh 'cp ./app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./build/test-results/test'
+                }
+            }
+        }
+
+
+
+
+        //stage('Playwright Tests') {
 /*             agent {
                 docker { image 'test:latest' }
             } */
-            steps {
-                bat 'docker run -d --name testapp test:latest'
+            //steps {
+                //bat 'docker run -d --name testapp test:latest'
                 //sh './gradlew test'
 
                 //step( [ $class: 'JacocoPublisher' ] )
-            }
-        }
+            //}
+        //}
 
 
 /*         stage ('Playwright Tests') {
