@@ -66,7 +66,7 @@ pipeline {
                 steps {
                     bat 'docker run -it -d --name testapp test:latest ./gradlew build'
                     //bat 'docker exec -it testapp bash'
-                    bat 'docker cp testapp:./app/app/build/test-results/test/TEST-*.xml ./build/test-results/test/'
+                    bat 'docker cp testapp:./app/build/test-results/test/TEST-*.xml ./build/test-results/test/'
                 }
             }
 
