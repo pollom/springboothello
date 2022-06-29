@@ -64,8 +64,8 @@ pipeline {
 
             stage ('Playwright Tests') {
                 steps {
-                    bat 'docker run -d --name testapp test:latest'
-                    bat 'docker exec -it testapp winpty ./gradlew build'
+                    bat 'docker run -it -d --name testapp test:latest ./gradlew build'
+                    //bat 'docker exec -it testapp bash'
                     bat 'docker cp testapp:/app/app/build/test-results/test/TEST-*.xml ./build/test-results/test/'
                 }
             }
