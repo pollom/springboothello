@@ -54,7 +54,8 @@ pipeline {
                     docker { image 'test:latest' }
                 }
                 steps {
-                    sh 'cp ./app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./build/test-results/test'
+                    //sh 'cp ./app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./build/test-results/test'
+                    echo "docker image step for playwright tests"
                 }
             }
 
