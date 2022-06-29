@@ -38,7 +38,7 @@ pipeline {
 
         stage('Playwright Tests') {
             steps {
-                docker.image('test:latest').withRun() { c ->
+                docker.image('test:latest').run() { c ->
                     /* Wait until mysql service is up */
                     //sh 'while ! mysqladmin ping -h0.0.0.0 --silent; do sleep 1; done'
                     /* Run some tests which require MySQL */
