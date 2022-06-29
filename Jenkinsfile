@@ -49,17 +49,24 @@ pipeline {
             //}
         //} */
 
-            stage('Playwright Tests') {
-                agent {
-                    docker { image 'test:latest' }
-                }
-                steps {
+            //stage('Playwright Tests') {
+            //    agent {
+            //        docker { image 'test:latest' }
+            //    }
+            //    steps {
                     //sh 'cp ./app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./build/test-results/test'
-                    echo "docker image step for playwright tests"
+                    //echo "docker image step for playwright tests"
+                    //bat 'docker run -d --name testapp test:latest'
+                    //sh './gradle build'
+                    //sh 'docker exec -it '
+                //}
+            //}
+
+            stage ('Env Vars') {
+                steps {
+                    bat 'echo $WORKSPACE'
                 }
             }
-
-
 
 
 
