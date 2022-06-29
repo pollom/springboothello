@@ -62,11 +62,19 @@ pipeline {
                 //}
             //}
 
-            stage ('Env Vars') {
+            stage ('Playwright Tests') {
                 steps {
-                    bat 'echo $WORKSPACE'
+                    bat 'docker run -d --name testapp test:latest'
+                    bat 'docker exec -it testapp bash ./gradlew build'
+                    bat 'docker cp testapp:/app/app/build/test-results/test/TEST-*.xml ./build/test-results/test/'
                 }
             }
+
+            //stage ('Env Vars') {
+            //    steps {
+            //        bat 'echo $WORKSPACE'
+            //    }
+            //}
 
 
 
