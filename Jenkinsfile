@@ -36,7 +36,7 @@ pipeline {
         }
 
 
-        stage('Playwright Tests') {
+/*         stage('Playwright Tests') {
             steps {
                 docker.image('test:latest').run() { c ->
                     /* Wait until mysql service is up */
@@ -44,10 +44,20 @@ pipeline {
                     /* Run some tests which require MySQL */
                     //sh 'make check'
                     //sh 'cp ./app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./build/test-results/test'
-                    sh "docker logs ${c.id}"
+                    //sh "docker logs ${c.id}"
+                //}
+            //}
+        //} */
+
+            stage('Playwright Tests') {
+                agent {
+                    docker { image 'test:latest' }
+                }
+                steps {
+                    sh 'cp ./app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./build/test-results/test'
                 }
             }
-        }
+
 
 
 
