@@ -38,12 +38,13 @@ pipeline {
 
         stage('Playwright Tests') {
             steps {
-                docker.image('test:latest').withRun('./gradlew build') { c ->
+                docker.image('test:latest').withRun() { c ->
                     /* Wait until mysql service is up */
                     //sh 'while ! mysqladmin ping -h0.0.0.0 --silent; do sleep 1; done'
                     /* Run some tests which require MySQL */
                     //sh 'make check'
-                    sh 'cp ./app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./build/test-results/test'
+                    //sh 'cp ./app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./build/test-results/test'
+                    sh "docker logs ${c.id}"
                 }
             }
         }
