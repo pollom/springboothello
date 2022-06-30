@@ -35,6 +35,14 @@ pipeline {
             }
         }
 
+        stage ('Playwright Tests') {
+            steps {
+                realtimeJUnit('**/playwright/TEST-*.xml') {
+                    //sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
+                    //bat 'gradlew clean test'
+                }
+            }
+        }
 
 /*         stage('Playwright Tests') {
             steps {
