@@ -37,10 +37,11 @@ pipeline {
 
         stage ('Playwright Tests') {
             steps {
-                bat 'docker run -it -d --name testapp test:latest ./gradlew build'
+                //bat 'docker run -it -d --name testapp test:latest ./gradlew build'
+                CID = $(docker run -it -d --name testapp test:latest ./gradlew build)
                 //CID = $(docker ps -q -a name=testapp)
-                def containerName = 'testapp'
-                docker cp testapp:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright 
+                //def containerName = 'testapp'
+                docker cp $CID:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright 
 
                 realtimeJUnit('**/playwright/TEST-*.xml') {
                     //sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
