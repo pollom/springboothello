@@ -37,8 +37,8 @@ pipeline {
 
         stage ('Playwright Tests') {
             steps {
-                bat 'docker run -it -d --name testapp test:latest ./gradlew build'
-                CID = $(docker ps -q -a name=testapp)
+                CID = $(bat 'docker run -it -d --name testapp test:latest ./gradlew build')
+                //CID = $(docker ps -q -a name=testapp)
                 docker cp $CID:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright 
 
                 realtimeJUnit('**/playwright/TEST-*.xml') {
