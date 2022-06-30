@@ -37,7 +37,8 @@ pipeline {
 
         stage ('Playwright Tests') {
             steps {
-                bat 'docker run -it -d --name testapp test:latest -v /playwright:/app/app/build/test-results/test ./gradlew build'
+                bat 'docker run -d --name testapp test:latest -v /playwright:/app/app/build/test-results/test'
+                bat 'docker exec -it testapp bash ./gradlew build'
                 //CID = $('docker run -it -d --name testapp test:latest ./gradlew build')
                 //CID = $(docker ps -q -a name=testapp)
                 //def containerName = 'testapp'
