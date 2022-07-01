@@ -35,9 +35,11 @@ pipeline {
             }
         }
 
-        stage ('Playwright Tests') {
+        stage ('Load Test Image') {
             steps {
                 bat 'docker load -i test.tar'
+                //bat 'docker run -d --name testapp test:latest'
+                //bat 'docker cp testapp:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright'
                 //bat 'docker run -d --name testapp test:latest'
                 //bat 'docker run -d --name testapp test:latest -v /playwright:/app/app/build/test-results/test'
                 //bat 'docker exec -it testapp ./gradlew build'
@@ -47,16 +49,22 @@ pipeline {
                 //docker cp ${CID}:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright 
  
             }
-            post {
+
+        }
+        
+        stage ('Playwright Tests') {
+            steps {
                 bat 'docker run -d --name testapp test:latest'
-                bat 'docker cp testapp:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright'
+                bat 'docker cp testapp:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright'                
+            }
+            post {
+
                 realtimeJUnit('**/playwright/TEST-*.xml') {
                     //sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
                     //bat 'gradlew clean test'
                 }                
             }
         }
-
 /*         stage('Playwright Tests') {
             steps {
                 docker.image('test:latest').run() { c ->
