@@ -54,8 +54,9 @@ pipeline {
         
         stage ('Playwright Tests') {
             steps {
-                bat 'docker run -d --name testapp test:latest'
-                bat 'docker cp testapp:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright'   
+                //bat 'docker run -d --name testapp test:latest'
+                bat 'docker run -d --name testapp test:latest -v /playwright:/app/app/build/test-results/test
+                //bat 'docker cp testapp:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright'   
                 realtimeJUnit('**/playwright/TEST-*.xml') {
                     //sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
                     //bat 'gradlew clean test'
