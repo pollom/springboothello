@@ -35,7 +35,7 @@ pipeline {
             }
         }
 
-        stage ('Load Test Image') {
+        stage ('Load Playwright Image') {
             steps {
                 bat 'docker load -i test.tar'
                 //bat 'docker run -d --name testapp test:latest'
