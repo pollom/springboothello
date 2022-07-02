@@ -56,7 +56,7 @@ pipeline {
             steps {
                 //bat 'docker run -d --name testapp test:latest'
                 bat 'docker run -it -d --name testapp test:latest -v /playwright:/app/app/build/test-results/test curl http://172.17.0.2:8080/'
-                bat 'docker cp testapp:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright'
+                //bat 'docker cp testapp:/app/app/build/test-results/test/TEST-PlayDemo.AppTest.xml ./playwright'
                 //bat 'docker-compose up -d'
                 //bat 'docker-compose stop && docker-compose rm -f'
                 realtimeJUnit('**/playwright/TEST-*.xml') {
